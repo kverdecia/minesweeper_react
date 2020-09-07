@@ -18,7 +18,6 @@ export const DetailBoardView = () => {
             const board = await get(url)
             if (response.ok) {
                 setBoard(board)
-                await cache.delete()
             }
         }
         loadBoard() 
