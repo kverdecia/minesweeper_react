@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from "react-router-dom";
 import {BoardList} from './board-list'
 import useFetch from 'use-http'
 
@@ -20,7 +21,10 @@ export const ListBoardView = () => {
 
     return (
         <div className="container-fluid">
-            <h3>Created boards</h3>
+            <h3>
+                Created boards {' '}
+                <Link to={`/new`} className="btn btn-primary">New board</Link>
+            </h3>
             {error && 'Error loading boards!'}
             {loading && 'Loading boards...'}
             <BoardList boards={boardList} />

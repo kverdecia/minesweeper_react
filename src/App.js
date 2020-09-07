@@ -5,10 +5,9 @@ import {
     Route
   } from "react-router-dom";
 
-import logo from './logo.svg';
-import './App.css';
 import {ListBoardView} from './components/list-board-view'
 import {DetailBoardView} from './components/detail-board-view'
+import {AddBoardView} from './components/add-board-view'
 
 
 function App() {
@@ -19,6 +18,9 @@ function App() {
             </div>
             <Router>
                 <Switch>
+                    <Route path="/new">
+                        <AddBoardView />
+                    </Route>
                     <Route path="/:boardId">
                         <DetailBoardView />
                     </Route>
