@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import useFetch from 'use-http'
 import {
     useParams,
+    useHistory,
     Link,
 } from "react-router-dom"
 import {Board} from './board'
@@ -9,9 +10,10 @@ import {Board} from './board'
 
 export const DetailBoardView = () => {
     const {boardId} = useParams()
+    const history = useHistory()
     const url = `/api/v1/boards/${boardId}/`
     const [board, setBoard] = useState(null);
-    const { get, put, response, loading, error, cache } = useFetch('', {cachePolicy: 'no-cache'})
+    const { get, put, del, response, loading, error, cache } = useFetch('', {cachePolicy: 'no-cache'})
 
     useEffect(() => {
         async function loadBoard() {
@@ -51,6 +53,19 @@ export const DetailBoardView = () => {
         }
     }
 
+    const onDelete = async () => {
+        if (loading) {
+            console.log("Cannot delete the board: pending operation.")
+            return
+        }
+        if (window.confirm("Do you want to delete this board?")) {
+            await del(url)
+            if (response.ok) {
+                history.replace("/")
+            }
+        }
+    }
+
     return (
         <div className="container-fluid">
             <h3>
@@ -70,7 +85,8 @@ export const DetailBoardView = () => {
             {board && <Board board={board.display_board} onReveal={onReveal} onMark={onMark} />}
 
             <div className="mt-3">
-                <Link to="/" className="btn btn-primary">Return</Link>
+                <Link to="/" className="btn btn-primary">Return</Link>{' '}
+                <button className="btn btn-danger" onClick={onDelete}>Delete this board</button>
             </div>
 
         </div>

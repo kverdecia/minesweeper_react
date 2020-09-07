@@ -50,10 +50,10 @@ const BoardCell = ({boardCell, rowPos, colPos, onReveal, onMark}) => {
     }
     return (
         <TD onClick={onClick} value={boardCell}>
-            {boardCell === '!' && <i class="fa fa-flag"></i>}
-            {boardCell === '?' && <i class="fa fa-question"></i>}
-            {boardCell === '*' && <i class="fa fa-bomb"></i>}
-            {boardCell === '**' && <i class="fa fa-bomb text-danger"></i>}
+            {boardCell === '!' && <i className="fa fa-flag"></i>}
+            {boardCell === '?' && <i className="fa fa-question"></i>}
+            {boardCell === '*' && <i className="fa fa-bomb"></i>}
+            {boardCell === '**' && <i className="fa fa-bomb text-danger"></i>}
             {boardCell === ' ' && ' '}
             {parseInt(boardCell) > 0 && boardCell}
         </TD>
