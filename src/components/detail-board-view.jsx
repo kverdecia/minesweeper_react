@@ -30,9 +30,9 @@ export const DetailBoardView = () => {
             console.log("Cannot reveal the cell: pending operation.")
             return
         }
-        const board = await put(url, {row, column, operation: 'reveal_cell'})
+        const updatedBoard = await put(url, {row, column, operation: 'reveal_cell'})
         if (response.ok) {
-            setBoard(board)
+            setBoard(updatedBoard)
             await cache.delete()
         }
     }
@@ -44,9 +44,9 @@ export const DetailBoardView = () => {
             console.log("Cannot mark the cell: pending operation.")
             return
         }
-        const board = await put(url, {row, column, operation: 'mark_cell'})
+        const updatedBoard = await put(url, {row, column, operation: 'mark_cell'})
         if (response.ok) {
-            setBoard(board)
+            setBoard(updatedBoard)
             await cache.delete()
         }
     }
