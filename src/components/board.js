@@ -12,16 +12,16 @@ const KABOOM = 16
 
 
 const Table = Styled.table`
-    background-color: #dddddd;
+    background-color: #eeeeee;
 `
 
 const TR = Styled.tr`
-    background-color: #dddddd;
+    background-color: #eeeeee;
     `
 
 const TD = Styled.td`
-    background-color: #bbbbbb;
-    border: 1px solid #dddddd;
+    background-color: ${props => isNaN(parseInt(props.value)) ? '#aaaaaa;' : '#cccccc;'} 
+    border: 1px solid #eeeeee;
     width: 32px;
     height: 32px;
     font-size: 24px;
@@ -48,7 +48,7 @@ const BoardCell = ({boardCell, rowPos, colPos, onReveal, onMark}) => {
         }
     }
     return (
-        <TD onClick={onClick}>
+        <TD onClick={onClick} value={boardCell}>
             {boardCell === '!' && <i class="fa fa-flag"></i>}
             {boardCell === '?' && <i class="fa fa-question"></i>}
             {boardCell === '*' && <i class="fa fa-bomb"></i>}
@@ -59,7 +59,7 @@ const BoardCell = ({boardCell, rowPos, colPos, onReveal, onMark}) => {
     )
 }
 BoardCell.propTypes = {
-    boardCell: PropTypes.number.isRequired,
+    boardCell: PropTypes.string.isRequired,
     rowPos: PropTypes.number.isRequired,
     colPos: PropTypes.number.isRequired,
     onReveal: PropTypes.func.isRequired,
