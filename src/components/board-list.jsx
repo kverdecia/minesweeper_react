@@ -9,7 +9,7 @@ const BoardRow = ({board}) =>
         <td>{board.rows}</td>
         <td>{board.columns}</td>
         <td>{board.mines}</td>
-        <td>{board.finished}</td>
+        <td>{board.finished && <i className="fa fa-check"></i>}</td>
         <td>{moment(board.created).format("MM/DD/YYYY HH:mm:ss")}</td>
         <td>{moment(board.modified).format("MM/DD/YYYY HH:mm:ss")}</td>
         <td>
