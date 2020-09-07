@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import {Link} from "react-router-dom";
 
 
 const BoardRow = ({board}) =>
@@ -11,6 +12,9 @@ const BoardRow = ({board}) =>
         <td>{board.finished}</td>
         <td>{moment(board.created).format("MM/DD/YYYY HH:mm:ss")}</td>
         <td>{moment(board.modified).format("MM/DD/YYYY HH:mm:ss")}</td>
+        <td>
+            <Link to={`/${board.id}`} className="btn btn-primary">View board</Link>
+        </td>
     </tr>
 BoardRow.propTypes = {
     board: PropTypes.object.isRequired
@@ -29,6 +33,7 @@ export const BoardList = ({boards}) => {
                     <th>Finshed</th>
                     <th>Created</th>
                     <th>Last modified</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>

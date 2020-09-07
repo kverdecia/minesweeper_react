@@ -3,7 +3,7 @@ import {BoardList} from './board-list'
 import useFetch from 'use-http'
 
 
-export const BoardView = () => {
+export const ListBoardView = () => {
     const { loading, error, data = [] } = useFetch('/api/v1/boards/', {}, [])
     return (
         <div className="container-fluid">
