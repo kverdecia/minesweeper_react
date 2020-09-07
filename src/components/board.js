@@ -28,6 +28,12 @@ const TD = Styled.td`
     padding: 2px;
     vertical-align: middle;
     text-align: center;
+    cursor: pointer;
+
+    &:hover {
+        cursor: pointer;
+    }
+
 `
 
 

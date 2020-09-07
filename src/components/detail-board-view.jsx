@@ -25,7 +25,8 @@ export const DetailBoardView = () => {
     }, [boardId])
 
     const onReveal = async (row, column) => {
-        console.log("onReveal", row, column)
+        if (board && board.finished)
+            return
         if (loading) {
             console.log("Cannot reveal the cell: pending operation.")
             return
@@ -38,7 +39,8 @@ export const DetailBoardView = () => {
     }
 
     const onMark = async (row, column) => {
-        console.log("onMark", row, column)
+        if (board && board.finished)
+            return
         if (loading) {
             console.log("Cannot mark the cell: pending operation.")
             return
@@ -56,13 +58,22 @@ export const DetailBoardView = () => {
                 Minesweeper Board
             </h3>
             <div>
-                <span>Status: </span>
+                <span className="badge badge-info">Click</span> to reveal a cell
+            </div>
+            <div>
+                <span className="badge badge-info">Ctrl + Click</span> to mark a cell
+            </div>
+            <div>
+                <span style={{visibility: 'hidden'}}>Status: </span>
                 {error && 'Error loading boards!'}
                 {loading && 'Loading boards...'}
             </div>
             {board && <Board board={board.display_board} onReveal={onReveal} onMark={onMark} />}
 
-            <Link to="/" className="btn btn-primary">Return</Link>
+            <div className="mt-3">
+                <Link to="/" className="btn btn-primary">Return</Link>
+            </div>
+
         </div>
     )
 }
