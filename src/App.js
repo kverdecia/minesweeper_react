@@ -14,7 +14,7 @@ function App() {
     return (
         <React.Fragment>
             <div className="container-fluid">
-                <h1>MineSweeper</h1>
+                <h1>MineSweeper <a href="/accounts/logout" className="btn btn-link">Logout</a></h1>
             </div>
             <Router>
                 <Switch>
