@@ -13,7 +13,7 @@ const BoardRow = ({board}) =>
         <td>{moment(board.created).format("MM/DD/YYYY HH:mm:ss")}</td>
         <td>{moment(board.modified).format("MM/DD/YYYY HH:mm:ss")}</td>
         <td>
-            <Link to={`/${board.id}`} className="btn btn-primary">View board</Link>
+            <Link to={`/${board.id}`} className="btn btn-info">View board</Link>
         </td>
     </tr>
 BoardRow.propTypes = {
