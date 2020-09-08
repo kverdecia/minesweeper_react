@@ -8,6 +8,21 @@ import {
 import {Board} from './board'
 
 
+const isWonBoard = (board) => {
+    if (board.finished) {
+        for (const row of board.display_board) {
+            for (const value of row) {
+                if (value === '**')
+                    return false
+            }
+        }
+        return true
+    }
+    return false
+}
+
+
+
 export const DetailBoardView = () => {
     const {boardId} = useParams()
     const history = useHistory()
@@ -71,12 +86,27 @@ export const DetailBoardView = () => {
             <h3>
                 Minesweeper Board
             </h3>
+            {board && !board.finished && 
+            <React.Fragment>
+                <div>
+                    <span className="badge badge-info">Click</span> to reveal a cell
+                </div>
+                <div>
+                    <span className="badge badge-info">Ctrl + Click</span> to mark a cell
+                </div>
+            </React.Fragment>
+            }
+            {board && board.finished && isWonBoard(board) &&
             <div>
-                <span className="badge badge-info">Click</span> to reveal a cell
+                <span className="badge badge-info text-uppercase">You won!!!</span>
             </div>
+            }
+            {board && board.finished && !isWonBoard(board) &&
             <div>
-                <span className="badge badge-info">Ctrl + Click</span> to mark a cell
+                <span className="badge badge-danger text-uppercase">You lost</span>
             </div>
+            }
+            
             <div>
                 <span style={{visibility: 'hidden'}}>Status: </span>
                 {error && 'Error loading boards!'}
